@@ -1,0 +1,35 @@
+{
+  "$schema": "https://claude.ai/schemas/managed-settings.json",
+  "version": "1.0",
+  "description": "jeytech Enterprise Claude Code settings",
+
+  "permissions": {
+    "deny": [
+      "Bash(curl:*secrets*)",
+      "Bash(curl:*password*)",
+      "Bash(wget:*)",
+      "Bash(sudo:*)",
+      "Bash(rm:-rf /*)",
+      "Read(**/.env*)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/secrets/**)",
+      "Write(**/.env*)",
+      "Write(**/*.key)",
+      "Write(**/*.pem)",
+      "Write(**/secrets/**)"
+    ],
+    "allowBypassPermissionsMode": false
+  },
+
+  "audit": {
+    "enabled": true,
+    "logLevel": "info",
+    "retentionDays": 90
+  },
+
+  "companyAnnouncements": [
+    "🔒 Never commit API keys or secrets to version control",
+    "📖 Coding standards: docs.jeytech.example/standards"
+  ]
+}
