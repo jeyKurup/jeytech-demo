@@ -1,6 +1,6 @@
-# NovaTech Design Specifications
+# JeyTech Design Specifications
 
-Design documentation for the NovaTech Solutions website.
+Design documentation for the JeyTech Solutions website.
 
 ## Brand Colors
 
@@ -96,6 +96,6 @@ Based on 4px grid:
 
 > Placeholder references for course demo
 
-- Design System: `figma.com/file/novatech-design-system`
-- Homepage: `figma.com/file/novatech-homepage`
-- Components: `figma.com/file/novatech-components`
+- Design System: `figma.com/file/JeyTech-design-system`
+- Homepage: `figma.com/file/JeyTech-homepage`
+- Components: `figma.com/file/JeyTech-components`

@@ -1,216 +1,233 @@
 # JeyTech Solutions
 
-Demo project for the **Advanced Claude Code** course on Pluralsight.
+A fictional technology consultancy website built with plain HTML5, CSS3, and vanilla JavaScript. This project serves as a hands-on learning environment for the **Advanced Claude Code** course on Pluralsight.
 
-## Quick Start
+---
 
-### 1. Clone the Repository
+## Project Overview
+
+JeyTech Solutions is a five-page static website for a technology consultancy. The site covers the company's services, portfolio, team, and a working contact form. The codebase is intentionally framework-free so the focus stays on Claude Code tooling rather than any particular frontend framework.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Markup | HTML5 with semantic elements |
+| Styles | CSS3 with custom properties (design tokens) |
+| Behaviour | Vanilla JavaScript (ES6+ modules) |
+| Dev server | `serve` (via `npx`) |
+| Linting | ESLint |
+| Formatting | Prettier |
+| Unit tests | Node.js built-in test runner (`node --test`) |
+| End-to-end tests | Playwright |
+
+No frontend frameworks or build tools are required to run the site.
+
+---
+
+## Prerequisites
+
+- Node.js 18 or later
+- npm (included with Node.js)
+- Git
+
+---
+
+## Setup and Installation
+
+### 1. Clone the repository
+
 ```bash
-# Clone the repository
-git clone https://github.com/nyisztor/novatech-demo.git
+git clone https://github.com/nyisztor/JeyTech-demo.git
 cd jeytech-demo
+```
 
-# Install dependencies
+### 2. Install dependencies
+
+```bash
 npm install
 ```
 
-### 2. Figma Designs (Optional)
+This installs all development dependencies: Playwright, ESLint, Prettier, and the `serve` package.
 
-For the Figma MCP integration modules, you can duplicate the NovaTech designs to your own Figma account:
-
-**Figma Design File:**  
-[https://www.figma.com/design/UZ2t3sc5vi2cn9MXHkOfLY/NovaTech-Solutions?node-id=1-2&p=f](https://www.figma.com/design/UZ2t3sc5vi2cn9MXHkOfLY/NovaTech-Solutions?node-id=1-2&p=f)
-
-**To use:**
-- Click the link (requires free Figma account)
-- The design file opens in Figma
-- You can inspect, use with MCP, or duplicate to your Drafts if you want your own editable copy
-
-**What's included:**
-- Homepage (current design)
-- Homepage - Updated (with design changes for demos)
-
-**Note:** This is optional. You can follow along with the videos without opening the file, or practice MCP integration with your own Figma files.
-
-### 3. Setting Up API Tokens
-
-To use the GitHub and Figma MCP servers, you'll need to configure API tokens as environment variables. This keeps your credentials secure and out of version control.
-
-#### 3.1 GitHub Token
-
-**Create a token:**
-1. Go to https://github.com/settings/tokens
-2. Click "Generate new token" → "Generate new token (classic)"
-3. Give it a name like "Claude Code MCP"
-4. Select scopes: `repo` (for private repos) and `read:org` (for organization access)
-5. Click "Generate token" and copy it
-
-**Set the environment variable:**
-
-**macOS (zsh):**
-```bash
-echo 'export GITHUB_TOKEN=your_token_here' >> ~/.zshrc
-source ~/.zshrc
-```
-*Note: macOS uses zsh as the default shell*
-
-**Linux (bash):**
-```bash
-echo 'export GITHUB_TOKEN=your_token_here' >> ~/.bashrc
-source ~/.bashrc
-```
-*Note: Most Linux systems use bash as the default shell*
-
-**Windows (PowerShell/Command Prompt):**
-```cmd
-setx GITHUB_TOKEN "your_token_here"
-```
-Then restart your terminal.
-
-*Alternative:* You can also set it through System Properties → Environment Variables → New User variable
-
-#### 3.2 Figma Token (Optional)
-
-**For Remote MCP Server only** (Desktop MCP uses OAuth and doesn't need a token):
-
-**Create a token:**
-1. Go to https://www.figma.com/settings
-2. Scroll to "Personal access tokens"
-3. Click "Generate new token"
-4. Give it a name like "Claude Code MCP"
-5. Copy the token
-
-**Set the environment variable:**
-
-**macOS (zsh):**
-```bash
-echo 'export FIGMA_ACCESS_TOKEN=your_token_here' >> ~/.zshrc
-source ~/.zshrc
-```
-
-**Linux (bash):**
-```bash
-echo 'export FIGMA_ACCESS_TOKEN=your_token_here' >> ~/.bashrc
-source ~/.bashrc
-```
-
-**Windows:**
-```cmd
-setx FIGMA_ACCESS_TOKEN "your_token_here"
-```
-Then restart your terminal.
-
-**Verify tokens are set:**
-```bash
-# Check GitHub token
-echo $GITHUB_TOKEN
-
-# Check Figma token (if configured)
-echo $FIGMA_ACCESS_TOKEN
-```
-
-From this point on, these environment variables will be available in every new terminal session, and Claude Code will pick them up automatically when it starts.
-
-
-### 4. Verify Setup
+### 3. Start the local development server
 
 ```bash
-# Open the website
 npm run dev
-
-Open: **http://localhost:3000/pages/index.html**
-
-# In another terminal, launch Claude Code
-claude
 ```
+
+Then open your browser to:
+
+```
+http://localhost:3000/pages/index.html
+```
+
+The `serve` package serves the `src/` directory. All internal links use root-relative paths (e.g., `/pages/services.html`), so the site must be accessed through the dev server rather than opened as a file directly.
+
 ---
-
-## ⚠️ Important: View Hidden Files
-
-This project uses a `.claude/` folder for Claude Code configurations. This folder is **hidden by default** on most operating systems.
-
-**To see hidden files:**
-
-| OS | Method |
-|----|--------|
-| **macOS** | In Finder: Press `Cmd + Shift + .` |
-| **Windows** | In File Explorer: View → Show → Hidden items |
-| **VS Code** | Hidden files are visible by default |
-| **Linux** | In file manager: `Ctrl + H` or View → Show Hidden Files |
-| **Terminal** | Use `ls -la` instead of `ls` |
-
-The `.claude/` folder contains subagents, skills, hooks, and enterprise templates used throughout this course.
-
-## About This Project
-
-NovaTech Solutions is a fictional tech consultancy website. It serves as a hands-on learning environment for advanced Claude Code features:
-
-| Module | Feature | Key Files |
-|--------|---------|-----------|
-| 1 | MCP Server Integration | `.mcp.json` |
-| 2 | Subagents | `.claude/agents/` |
-| 3 | Git Worktrees | `scripts/setup-worktrees.sh` |
-| 4 | Enterprise Features | `.claude/enterprise-templates/` |
-| 5 | Agent Skills | `.claude/skills/` |
-| 6 | Hooks | `.claude/settings.json` |
 
 ## Project Structure
 
 ```
-novatech-demo/
+jeytech-demo/
 ├── src/
-│   ├── pages/          # HTML pages (5 pages)
-│   ├── css/            # Stylesheets with design system
-│   └── js/             # JavaScript modules
+│   ├── pages/                  # The five HTML pages
+│   │   ├── index.html          # Homepage — hero, feature highlights, CTA
+│   │   ├── services.html       # Services listing (development, cloud, consulting, data)
+│   │   ├── portfolio.html      # Project gallery with category filter buttons
+│   │   ├── team.html           # Team member cards and company values
+│   │   └── contact.html        # Contact form with inline validation
+│   ├── css/
+│   │   ├── variables.css       # Design tokens (colours, typography, spacing, shadows)
+│   │   ├── base.css            # CSS reset and global element styles
+│   │   ├── components.css      # Shared components (buttons, nav, footer, forms)
+│   │   └── pages/
+│   │       ├── home.css        # Homepage-specific styles
+│   │       ├── services.css    # Services page styles
+│   │       ├── portfolio.css   # Portfolio grid and filter styles
+│   │       ├── team.css        # Team card and values section styles
+│   │       └── contact.css     # Contact form layout styles
+│   └── js/
+│       ├── navigation.js       # Mobile nav toggle (open/close, Escape key, outside-click)
+│       ├── portfolio-filters.js # Category filter logic for the portfolio page
+│       ├── contact-form.js     # Form submission handler (uses validation.js)
+│       └── validation.js       # Reusable field and form validation utilities
 ├── tests/
-│   ├── e2e/            # Playwright tests
-│   └── unit/           # Node.js unit tests
-├── docs/               # Design specs, API docs
-├── scripts/            # Automation scripts
-├── .claude/
-│   ├── agents/         # Subagent definitions
-│   ├── skills/         # Custom skills
-│   ├── commands/       # Slash commands
-│   ├── enterprise-templates/
-│   └── settings.json   # Hooks configuration
-├── .mcp.json           # MCP server configuration
-└── CLAUDE.md           # Project context
+│   ├── e2e/
+│   │   ├── navigation.spec.js  # Playwright tests for desktop and mobile navigation
+│   │   └── contact-form.spec.js # Playwright tests for the contact form
+│   └── unit/
+│       └── validation.test.js  # Unit tests for email, phone, and length validation
+├── docs/                       # Design specs and API documentation
+├── .claude/                    # Claude Code configuration (agents, skills, hooks, commands)
+├── .mcp.json                   # MCP (Model Context Protocol) server configuration
+├── package.json
+└── CLAUDE.md                   # Project conventions and context for Claude Code
 ```
 
-## Available Commands
+---
 
-Run these from the project root (`novatech-demo/`):
+## Available npm Scripts
+
+Run all commands from the project root.
+
+| Script | What it does |
+|---|---|
+| `npm run dev` | Starts the local server at `http://localhost:3000` |
+| `npm run lint` | Runs ESLint against `src/js/` |
+| `npm run lint:fix` | Runs ESLint and auto-fixes where possible |
+| `npm run format` | Formats all HTML, CSS, and JS files in `src/` with Prettier |
+| `npm run format:check` | Checks formatting without writing changes |
+| `npm run test` | Runs unit tests then E2E tests |
+| `npm run test:unit` | Runs Node.js unit tests in `tests/unit/` |
+| `npm run test:e2e` | Runs Playwright E2E tests |
+| `npm run test:e2e:ui` | Opens the Playwright UI for interactive test runs |
+
+---
+
+## Code Conventions
+
+### HTML
+
+- Use semantic elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`
+- Include ARIA (Accessible Rich Internet Applications) labels and `aria-current` attributes for navigation state
+- Keep each page under 200 lines
+- Add a skip-link (`<a href="#main-content">`) at the top of every page
+
+### CSS
+
+- Follow BEM (Block Element Modifier) naming: `.block__element--modifier`
+  - Example: `.nav__menu`, `.feature-card__title`, `.btn--primary`
+- Use CSS custom properties defined in `variables.css` for all colours, spacing, and typography values
+- Write mobile-first responsive styles
+- All design tokens live in `variables.css` under `:root`
+
+### JavaScript
+
+- ES6 modules with named exports — no default exports
+- JSDoc comments on all public functions
+- No global variables; module-level constants use `const` with descriptive names
+- Each module auto-initialises on `DOMContentLoaded` (or immediately if the DOM is already ready)
+- Modules that apply to specific pages are only loaded on those pages via `<script type="module">` tags
+
+---
+
+## Testing
+
+Run tests before committing. The full suite runs unit tests first, then E2E tests:
 
 ```bash
-npm run dev         # Start local server
-npm run lint        # Run ESLint
-npm run format      # Run Prettier
-npm run test        # Run all tests
-npm run test:e2e    # Run Playwright E2E tests
-npm run test:unit   # Run unit tests
+npm run test
 ```
 
-## Prerequisites
+Run each suite individually:
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed
-- Node.js 18+
-- Git
-- GitHub account (for MCP integration)
+```bash
+npm run test:unit    # Node.js built-in runner — no dependencies needed
+npm run test:e2e     # Playwright — requires npm install and a running browser
+```
 
-## Pre-configured Branches
+### Unit tests
 
-The repository includes branches for the Git Worktrees module:
+Located in `tests/unit/`. Written with the Node.js built-in `node:test` module and `node:assert`. Currently covers the validation logic in `src/js/validation.js`: email pattern, phone pattern, required-field checks, and minimum-length checks.
 
-- `feature/services-redesign` — Services page layout updates
-- `feature/contact-form` — Form validation improvements  
-- `bugfix/responsive-nav` — Mobile navigation fixes
+### End-to-end tests (E2E)
 
-## Open Pull Requests
+Located in `tests/e2e/`. Written with Playwright. Cover:
 
-Two PRs are available for the MCP/GitHub integration demo:
+- Desktop and mobile navigation behaviour (`navigation.spec.js`)
+- Contact form submission and inline validation (`contact-form.spec.js`)
 
-- **PR #1**: Add client testimonials section
-- **PR #2**: Update team page with new hires
+Playwright tests expect the dev server to be running on `http://localhost:3000` before you run them.
+
+---
+
+## Git Workflow
+
+### Branch naming
+
+| Branch | Purpose |
+|---|---|
+| `main` | Production-ready code |
+| `feature/*` | New features (e.g., `feature/services-redesign`) |
+| `bugfix/*` | Bug fixes (e.g., `bugfix/responsive-nav`) |
+
+### Commit message format
+
+```
+type: short description
+```
+
+| Type | When to use |
+|---|---|
+| `feat` | A new feature |
+| `fix` | A bug fix |
+| `docs` | Documentation changes only |
+| `style` | Formatting, whitespace — no logic change |
+| `refactor` | Code restructure with no behaviour change |
+| `test` | Adding or updating tests |
+
+Examples:
+
+```
+feat: add contact form validation
+fix: correct mobile nav toggle
+docs: update README setup instructions
+```
+
+---
+
+## Optional: Figma Design File
+
+The Figma design file used in the MCP integration modules is available here:
+
+[JeyTech Solutions on Figma](https://www.figma.com/design/UZ2t3sc5vi2cn9MXHkOfLY/JeyTech-Solutions?node-id=1-2&p=f)
+
+A free Figma account is required to view or duplicate it. This is optional — all course modules can be followed without accessing Figma.
+
+---
 
 ## License
 

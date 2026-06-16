@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # =============================================================================
-# NovaTech Git Worktree Setup Script
+# JeyTech Git Worktree Setup Script
 # Creates parallel working directories for concurrent Claude Code sessions
 # =============================================================================
 
 set -e
 
-PROJECT_NAME="novatech-demo"
+PROJECT_NAME="JeyTech-demo"
 WORKTREE_DIR="../${PROJECT_NAME}-worktrees"
 
 # Worktree definitions: branch_name:description
@@ -23,7 +23,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 echo "=========================================="
-echo "  NovaTech Worktree Setup"
+echo "  JeyTech Worktree Setup"
 echo "=========================================="
 echo
 

@@ -1,10 +1,10 @@
-# NovaTech API Specification
+# JeyTech API Specification
 
 API documentation for backend services (future implementation).
 
 ## Overview
 
-**Base URL**: `https://api.novatech.example/v1`
+**Base URL**: `https://api.JeyTech.example/v1`
 
 ## Authentication
 
